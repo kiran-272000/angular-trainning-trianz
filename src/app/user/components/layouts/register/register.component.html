@@ -1,6 +1,8 @@
 <section class="container">
   <h1 class="large text-primary">Sign Up</h1>
-  <p class="lead"><i class="fas fa-user"></i> Create Your Account</p>
+  <p class="lead">
+    <i class="fas fa-user"></i> Create Your Account {{ error | json }}
+  </p>
   <form class="form" (ngSubmit)="registerSubmit()">
     <div class="form-group">
       <input
@@ -8,16 +10,26 @@
         placeholder="Name"
         name="name"
         required
+        [ngClass]="{
+          'form-control form-control-lg': true,
+          'is-invalid': error.name ? true : false
+        }"
         [(ngModel)]="register.name"
       />
+      <div class="d-block invalid-feedback">{{ error.name }}</div>
     </div>
     <div class="form-group">
       <input
         type="email"
         placeholder="Email Address"
         name="email"
+        [ngClass]="{
+          'form-control form-control-lg': true,
+          'is-invalid': error.email ? true : false
+        }"
         [(ngModel)]="register.email"
       />
+      <div class="d-block invalid-feedback">{{ error.email }}</div>
       <small class="form-text"
         >This site uses Gravatar so if you want a profile image, use a Gravatar
         email</small
@@ -29,8 +41,13 @@
         placeholder="Password"
         name="password"
         minLength="6"
+        [ngClass]="{
+          'form-control form-control-lg': true,
+          'is-invalid': error.password ? true : false
+        }"
         [(ngModel)]="register.password"
       />
+      <div class="d-block invalid-feedback">{{ error.password }}</div>
     </div>
     <div class="form-group">
       <input
@@ -38,8 +55,13 @@
         placeholder="Confirm Password"
         name="password2"
         minLength="6"
+        [ngClass]="{
+          'form-control form-control-lg': true,
+          'is-invalid': error.password2 ? true : false
+        }"
         [(ngModel)]="register.password2"
       />
+      <div class="d-block invalid-feedback">{{ error.password2 }}</div>
     </div>
     <input type="submit" class="btn btn-primary" value="Register" />
   </form>
