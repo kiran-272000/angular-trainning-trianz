@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { HttpInterceptor } from './interceptors';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule],
+  // exports: [HttpInterceptor],
 })
-export class SharedModule { }
+export class SharedModule {}
