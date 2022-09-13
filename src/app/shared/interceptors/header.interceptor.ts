@@ -6,10 +6,11 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/user/services/auth.service';
 
 @Injectable()
 export class HeaderInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -19,8 +20,8 @@ export class HeaderInterceptor implements HttpInterceptor {
 
     request = request.clone({
       setHeaders: {
-        'api-key': 'kiran-test',
-        'content-type': 'application/json',
+        'api-key': this.authService.userId,
+        // 'content-type': 'application/json',
       },
     });
     return next.handle(request);

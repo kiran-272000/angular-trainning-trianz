@@ -11,7 +11,7 @@ import { Register } from '../models/register';
   providedIn: 'root'
 })
 export class AuthService {
-
+  public userId= 'abc'
   constructor(private http: HttpClient) { }
 
 
